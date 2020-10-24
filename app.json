@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "notes",
-    "slug": "notes",
+    "name": "Native Notes",
+    "slug": "native-notes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,8 +19,8 @@
     "ios": {
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "android": {
+      "package": "com.joaohouto.nativenotes"
     }
   }
 }
