@@ -1,6 +1,4 @@
-<p align="center">
-   <img src="./assets/icon.png" style="width:100px"/>
-</p>
+<img src="./assets/icon.png" style="width:100px;height:100px" width="100px"/>
 
 # <a href="https://github.com/joaocou/native-notes">Native Notes</a>
 
