@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <Container>
-            <Title>minhas notas</Title>
+            <Title>Native Notes</Title>
             <Subtitle>github.com/joaocou</Subtitle>
         </Container>
     )

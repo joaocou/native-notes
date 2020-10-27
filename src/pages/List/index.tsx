@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { FlatList, ListRenderItem, Modal, Alert } from 'react-native';
+
 import { Feather } from '@expo/vector-icons'
 
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import { Item, ItemProps } from '../../components/Item'
-
 import { Container, EmptyContainer, EmptyText, Wrapper, TextArea, Blur, CancelButton, CancelText } from './styles'
 
 import db from '../../services/database'
@@ -13,6 +13,7 @@ import db from '../../services/database'
 export default function List() { 
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -20,8 +21,6 @@ export default function List() {
     readItems();
   }, []);
 
-  //------------------------------------------------------------------------------------------------------------------
-  
   const createItem = () => {
     db.transaction(tx => {
       tx.executeSql('INSERT INTO items (content, checked) values (?, ?)', [inputValue, false], (_, item) => {
@@ -38,28 +37,42 @@ export default function List() {
   
   const readItems = () => {
     db.transaction(tx => {
-      tx.executeSql('SELECT * FROM items', [], (_, response) => setData(response.rows._array));
+      tx.executeSql('SELECT * FROM items', [], (_, response) => {
+        setData(response.rows._array);
+        setLoading(false);
+      });
     });
   }
 
-  const updateItem = (checked: boolean, id: string) => {
+  const updateItem = (checked: boolean, id: number) => {
     db.transaction(tx => {
       tx.executeSql('UPDATE items SET checked = ? WHERE id = ?', [checked, id], (_, response) => console.log('OK'));
     });
   }
 
-  const deleteItem = (id: string) => {
+  const deleteItem = (id: number) => {
     db.transaction(tx => {
       tx.executeSql('DELETE FROM items WHERE id = ?', [id], (_, response) => console.log('OK'));
     });
   }
 
-  //------------------------------------------------------------------------------------------------------------------
+  function isBlank(str: string) {
+    return (!str || /^\s*$/.test(str));
+  }
+
+  function isEmpty(str: string) {
+    return (str.length === 0 || !str.trim());
+  }
 
   const handleSave = () => {
-    createItem();
-    setInputValue('');
-    setIsModalVisible(false);
+    if (isEmpty(inputValue) || isBlank(inputValue)) {
+      Alert.alert('Espere.', 'Você não pode adicionar uma nota vazia!');
+      
+    } else {
+      createItem();
+      setInputValue('');
+      setIsModalVisible(false);
+    }
   }
 
   const removeItem = (id: string) => {
@@ -71,7 +84,6 @@ export default function List() {
   }
 
   const checkItem = (id: string) => {
-
     const newData = data.map(item => {
       if (item.id === id){
         updateItem(!item.checked, item.id)
@@ -85,15 +97,15 @@ export default function List() {
     setData(newData);
   }
 
-  const renderItem: ListRenderItem<ItemProps> = ({ item }) => {
-    return <Item 
-              id={item.id}
-              content={item.content} 
-              checked={item.checked} 
-              onCheck={() => checkItem(item.id)} 
-              onDelete={() => removeItem(item.id)} 
-            />
-  }
+  const renderItem: ListRenderItem<ItemProps> = ({ item }) => (
+    <Item 
+      id={item.id}
+      content={item.content} 
+      checked={item.checked} 
+      onCheck={() => checkItem(item.id)} 
+      onDelete={() => removeItem(item.id)} 
+    />
+  )
 
   return (
     <Container>
@@ -110,7 +122,7 @@ export default function List() {
         />
       ) }
 
-      { data.length === 0 && (
+      { data.length === 0 && loading === false && (
         <EmptyContainer>
           <Feather name="info" size={40} color="#999" />
           <EmptyText>Suas notas estão vazias.</EmptyText>

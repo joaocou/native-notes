@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite'
 
-const db = SQLite.openDatabase('joaosnotes.db')
+const db = SQLite.openDatabase('nativenotes.db')
 
 db.transaction(tx => {
     tx.executeSql('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT, checked BOOLEAN)')

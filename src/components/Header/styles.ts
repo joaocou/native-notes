@@ -4,10 +4,7 @@ export const Container = styled.View`
     padding: 30px 20px;
     margin: 20px 0;
     margin-bottom: 0;
-    background: #fafafa;
-
-    flex-direction: column;
-    justify-content: center;
+    background: #fff;
 `
 
 export const Title = styled.Text`
@@ -17,5 +14,5 @@ export const Title = styled.Text`
 `
 export const Subtitle = styled.Text`
     font-size: 14px;
-    color: #333;
+    color: #222;
 `

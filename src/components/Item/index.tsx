@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons'
 import { Container, Wrapper, TextArea, CloseButton, CheckButton } from './styles'
 
 export interface ItemProps {
-    id: string,
+    id: number,
     content: string,
     checked: boolean,
     onCheck: () => void,
@@ -14,10 +14,10 @@ export interface ItemProps {
 export const Item:React.FC<ItemProps> = ({ content, checked, onDelete, onCheck }) => {
 
     return (
-        <Container>
+        <Container style={{ opacity: checked ? 0.3 : 1 }}>
             <Wrapper>
                 <CheckButton onPress={onCheck}>
-                    { checked ? <Feather name="check-square" size={20} color="#222" /> : <Feather name="square" size={20} color="#222" /> }
+                    { checked ? <Feather name="check-square" size={20} color="#999" /> : <Feather name="square" size={20} color="#999" /> }
                 </CheckButton>
                 
                 <TextArea>
@@ -28,5 +28,5 @@ export const Item:React.FC<ItemProps> = ({ content, checked, onDelete, onCheck }
                 <Feather name="x" size={20} color="#999" />
             </CloseButton>
         </Container>
-    )
+    );
 }

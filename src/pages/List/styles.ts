@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
     flex: 1;
+    background: #f1f1f1;
 `
 
 export const EmptyContainer = styled.View`
@@ -14,13 +15,12 @@ export const EmptyContainer = styled.View`
 export const EmptyText = styled.Text`
     font-size: 18px;
     font-weight: bold;
-    color: #111;
-    opacity: 0.4;
+    color: #999;
     margin-top: 20px;
 `
 
 export const Wrapper = styled.View`
-    background: #fafafa;
+    background: #fff;
     min-height: 200px;
     width: 100%;
     position: absolute;
@@ -40,11 +40,11 @@ export const Blur = styled.View`
 `
 
 export const TextArea = styled.TextInput`
-    border: 1px solid #ccc;
     border-radius: 8px;
     margin: 20px;
     padding: 10px 20px;
-    background: #fafafa;
+    background: #fff;
+    border: 1px solid #ddd;
 `
 
 export const CancelButton = styled.TouchableOpacity`
@@ -57,4 +57,5 @@ export const CancelButton = styled.TouchableOpacity`
 export const CancelText = styled.Text`
     font-size: 16px;
     font-weight: bold;
+    color: #555;
 `

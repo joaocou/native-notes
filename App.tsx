@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Routes from './src/routes'
+import List from './src/pages/List'
 
-export default function App() {
-  return (
-    <Routes />
-  )
+const App = () => {
+  return <List />;
 }
+
+export default App;

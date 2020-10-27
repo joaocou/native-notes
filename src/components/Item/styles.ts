@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 import { Dimensions } from 'react-native'
 
 export const Container = styled.View`
-    background: #fafafa;
+    background: #fff;
     padding: 15px;
     margin: 0px 20px;
     margin-bottom: 10px;
@@ -20,6 +20,7 @@ export const Wrapper = styled.View`
 export const TextArea = styled.Text`
     font-size: 14px;
     margin: 12px 20px;
+    color: #111;
     max-width: ${Dimensions.get('screen').width - 190}px;
 `
 

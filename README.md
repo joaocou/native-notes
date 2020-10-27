@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="./assets/icon.png" width="100"/>
+   <img src="./assets/icon.png" style="width:100px"/>
 </p>
 
 # <a href="https://github.com/joaocou/native-notes">Native Notes</a>
@@ -9,7 +9,7 @@
 [![Repo Size](https://img.shields.io/github/repo-size/joaocou/financeiro-mobile?color=005B97)](https://github.com/joaocou/native-notes/)
 
 
-> Um app de anotações, feito com React Native.
+> Um app de anotações simples, feito com React Native.
 
 
 ### 📌 Sumário
@@ -31,14 +31,14 @@
 
 ### <span id="Telas">📱 Telas</span>
 
-<div style="display:flex;flex-wrap:wrap;">
+<div style="display:flex;flex-wrap:wrap;justify-content:center;width:100%;">
    <img style="margin:5px" src="./assets/design.png" width="700">
 </div>
 
 ### <span id="Tecnologias">💻 Tecnologias</span>
 
 - React Native;
-- Expo.io;
+- Expo;
 - Expo Vector Icons;
 - SQLite Database;
 - Styled Components;
