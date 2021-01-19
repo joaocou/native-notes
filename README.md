@@ -22,7 +22,7 @@
 
 ### <span id="Caracteristicas">⚙️ Características</span>
 
-- Listar, adicionar e excluír notas;
+- Listar, adicionar e excluir notas;
 - Marcar notas como concluídas;
 - Temas: escuro e claro (não implementado);
 
